@@ -1,0 +1,26 @@
+<!-- product-list.component.html -->
+
+<div *ngIf="products && products.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Name</th>
+        <th>Description</th>
+        <!-- ... otras columnas -->
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.sku }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.last_updated | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!(products && products.length > 0)">
+  <p>No hay productos disponibles.</p>
+</div>
