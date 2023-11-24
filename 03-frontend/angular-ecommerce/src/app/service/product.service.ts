@@ -19,13 +19,13 @@ export class ProductService {
   
    getProductList(): Observable<Product[]> {
     return this.http.get<GetResponse>(this.baseUrl).pipe(
-      map(response => response._embedded.product) 
+      map(response => response._embedded.products) 
     );
   }  
 }
 
 interface GetResponse{
     _embedded:{
-      product: Product[];
+      products: Product[];
     }
   }

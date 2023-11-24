@@ -1,14 +1,12 @@
 package com.myshop.ecommerce.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "product_category")
-@Data
 public class ProductCategory implements Serializable {
 
     @Id
@@ -21,4 +19,30 @@ public class ProductCategory implements Serializable {
 
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
     private List<Product> products;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+    
+    
 }

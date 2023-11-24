@@ -1,26 +1,29 @@
 <!-- product-list.component.html -->
 
-<div *ngIf="products && products.length > 0">
-  <table>
-    <thead>
-      <tr>
-        <th>SKU</th>
-        <th>Name</th>
-        <th>Description</th>
-        <!-- ... otras columnas -->
-        <th>Last Updated</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.sku }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.last_updated | date }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div *ngIf="!(products && products.length > 0)">
-  <p>No hay productos disponibles.</p>
+<div class="container mt-4">
+  <div *ngIf="products && products.length > 0">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Units in Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td class="align-middle">
+            <img src="{{product.imageUrl}}" height="50">
+          </td>
+          <td class="align-middle">{{ product.name }}</td>
+          <td class="align-middle">{{ product.unitPrice | currency:'USD'}}</td>
+          <td class="align-middle">{{ product.unitsInStock }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!(products && products.length > 0)" class="alert alert-info">
+    No hay productos disponibles.
+  </div>
 </div>
